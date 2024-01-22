@@ -34,3 +34,16 @@ button{
       flex-direction: column;
     }
   }
+
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
+
+.youIMG{
+    animation: blinker 1s linear;
+}
+.computerIMG{
+    animation: blinker 1s linear;
+}

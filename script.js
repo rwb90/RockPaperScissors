@@ -14,7 +14,6 @@ let computerScore = 0;
         button.addEventListener('click', () => {
             if(button.className == 'rock'){
                 userChoice = 'rock';
-                
             }
             else if(button.className == 'paper'){
                 userChoice = 'paper';
@@ -76,8 +75,17 @@ function updateScore(){
     
 function displayResult(userChoice,computerChoice){
     youIMG.src = "./pictures/"+userChoice+".png";
+    youIMG.classList.remove('youIMG');
+    setTimeout(() => {
+        youIMG.classList.add('youIMG');
+      }, 0);
     youIMG.setAttribute('style', 'width: 200px; height: 200px;' );
+    
     computerIMG.src = "./pictures/"+computerChoice+".png";
+    computerIMG.classList.remove('computerIMG');
+    setTimeout(() => {
+        computerIMG.classList.add('computerIMG');
+      }, 0);
     computerIMG.setAttribute('style', 'width: 200px; height: 200px;' );
     
 
