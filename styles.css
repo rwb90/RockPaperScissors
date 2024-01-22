@@ -1,0 +1,36 @@
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height:100vh;
+    padding-left:10%;
+    padding-right:10%;
+}
+div{
+    display: flex;
+    margin-right: 5%;
+    
+}
+button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px;
+    font-size:x-large;
+}
+.results{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+.score{
+    gap: 10px;
+}
+@media (max-width: 800px) {
+    .buttons {
+      flex-direction: column;
+    }
+  }

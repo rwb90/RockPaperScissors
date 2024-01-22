@@ -1,14 +1,33 @@
 let playerScore = 0;
 let computerScore = 0;
 
-for(let i = 0; i<5; i++){
-    let userChoice = prompt("Choose either rock paper or scissors: ").toLowerCase();
-    let rand = Math.floor(Math.random() * 3);
+    let userChoice = 'rock';
     let computerChoice = "rock";
-    getComputerChoice();
+    let buttons = document.querySelectorAll('button');
+    let youIMG = document.querySelector('.youIMG');
+    let computerIMG = document.querySelector('.computerIMG');
+    let computerScoreDisplay = document.querySelector('.computerScore');
+    let userScoreDisplay = document.querySelector('.userScore');
+    let finalResults = document.querySelector('.finalResults');
+
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            if(button.className == 'rock'){
+                userChoice = 'rock';
+                
+            }
+            else if(button.className == 'paper'){
+                userChoice = 'paper';
+            }
+            else if(button.className == 'scissors'){
+                userChoice = 'scissors';
+            }
+            playRound(userChoice,getComputerChoice());
+        }); 
+    });
     
     function getComputerChoice(){
-        //console.log(rand);
+        let rand = Math.floor(Math.random() * 3);
         if(rand ==0){
             computerChoice = "rock";
         }
@@ -24,39 +43,44 @@ for(let i = 0; i<5; i++){
     function playRound(userChoice,computerChoice){
         if(userChoice == "rock" && computerChoice == "paper"){
             computerScore++;
-            return "You Lose!";
         }
         else if(userChoice == "rock" && computerChoice == "scissors"){
             playerScore++;
-            return "You Win!";
         }
         else if(userChoice == "paper" && computerChoice == "rock"){
             playerScore++;
-            return "You Win!";
         }
         else if(userChoice == "paper" && computerChoice == "scissors"){
             computerScore++;
-            return "You Lose!";
         }
         else if(userChoice == "scissors" && computerChoice == "rock"){
             computerScore++;
-            return "You Lose!";
         }
         else if(userChoice == "scissors" && computerChoice == "paper"){
             playerScore++;
-            return "You Win!";
         }
-        else{
-            return "Draw!";
-        }
+        displayResult(userChoice, computerChoice);
+        updateScore();
     }
-    //console.log(userChoice,computerChoice);
-    console.log(playRound(userChoice,computerChoice));
-    if(playerScore >= 3){
-        console.log("You beat the computer best 3 out of 5!");
-    }    
-    else if(computerScore >= 3 ){
-        console.log("You lost to the computer best 3 out of 5!");
+
+function updateScore(){
+    userScoreDisplay.textContent = playerScore;
+    computerScoreDisplay.textContent = computerScore;
+    if(playerScore >= 5){
+        finalResults.textContent = "YOU WIN!";
+    }
+    else if(computerScore >= 5){
+        finalResults.textContent = "YOU LOSE!";
     }
 }
+    
+function displayResult(userChoice,computerChoice){
+    youIMG.src = "./pictures/"+userChoice+".png";
+    youIMG.setAttribute('style', 'width: 200px; height: 200px;' );
+    computerIMG.src = "./pictures/"+computerChoice+".png";
+    computerIMG.setAttribute('style', 'width: 200px; height: 200px;' );
+    
+
+}   
+
 
